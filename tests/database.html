@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Test - Practice Tests</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="print-test-container">
+            <div class="print-controls">
+                <a href="../index.html" class="btn btn-secondary">← Back to Tests</a>
+                <button class="btn btn-primary" onclick="window.print()">🖨️ Print Test</button>
+            </div>
+            
+            <div class="print-test-header">
+                <h1>Database Practice Test</h1>
+                <div class="student-info">
+                    <div>Name: <span></span></div>
+                    <div>Date: <span></span></div>
+                    <div>Score: <span></span></div>
+                </div>
+            </div>
+            
+            <div class="question-grid" id="question-grid">
+                <!-- Questions rendered by JavaScript -->
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2026 Practice Tests</p>
+        </footer>
+    </div>
+    
+    <script src="../app.js"></script>
+    <script>
+        renderPrintableTest('question-grid', databaseQuestions);
+    </script>
+</body>
+</html>
