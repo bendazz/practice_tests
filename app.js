@@ -351,16 +351,80 @@ print(y.grad)`,
 ];
 
 const databaseQuestions = [
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 }
+    { 
+        type: "free",
+        question: "Write an SQL query to select all columns and rows from a table named 'employees'.", 
+        answer: "SELECT * FROM employees;"
+    },
+    { 
+        type: "free",
+        question: "Write an SQL query that returns playerID, teamID, and HR from the Batting table, but only for records from 2025.", 
+        answer: "SELECT playerID, teamID, HR FROM Batting WHERE yearID = 2025;"
+    },
+    { 
+        type: "free",
+        question: "Write an SQL query that yields a list of playerIDs and their total home runs for the 10 players with the greatest home run totals in the last 5 years (2021-2025). The list should be ordered by home run total with the greatest total at the top.", 
+        answer: "SELECT playerID, SUM(HR) FROM Batting WHERE yearID >= 2021 GROUP BY playerID ORDER BY SUM(HR) DESC LIMIT 10;"
+    },
+    { 
+        type: "free",
+        question: "Write an SQL query that returns playerIDs and career home run totals for any player that has 600 or more career home runs.", 
+        answer: "SELECT playerID, SUM(HR) FROM Batting GROUP BY playerID HAVING SUM(HR) >= 600;"
+    },
+    { 
+        type: "free",
+        question: "Write an SQL query that yields playerID and teamID for any record where the teamID contains an N.", 
+        answer: "SELECT playerID, teamID FROM Batting WHERE teamID LIKE '%N%';"
+    },
+    { 
+        type: "free",
+        question: "Write an SQL query that yields team name and the maximum number of home runs hit by a player on that team in 2025. (Hint: just like SUM(), there is a MAX() function.)", 
+        answer: "SELECT name, MAX(Batting.HR) FROM Batting INNER JOIN Teams ON Batting.teamID = Teams.teamID AND Batting.yearID = Teams.yearID WHERE Batting.yearID = 2025 GROUP BY name;"
+    },
+    { 
+        type: "free",
+        question: "We have made an SQL query yielding name and teamID from the Teams table and now have the returned records in a list called records. Write a code snippet that creates a list of just the teamIDs.", 
+        answer: `<pre>teamIDs = []
+for record in records:
+    teamIDs.append(record[1])</pre>`
+    },
+    { 
+        type: "free",
+        question: "Write a Python code snippet that creates a connection to an sqlite3 database called baseball.db and also creates a cursor.", 
+        answer: `<pre>import sqlite3
+conn = sqlite3.connect('baseball.db')
+cursor = conn.cursor()</pre>`
+    },
+    { 
+        type: "free",
+        question: "Write a function that connects to the baseball database, gets the playerIDs from the Batting table, closes the connection, and returns the list of records.", 
+        answer: `<pre>import sqlite3
+
+def get_player_ids():
+    conn = sqlite3.connect('baseball.db')
+    cursor = conn.cursor()
+    query = "SELECT playerID FROM Batting"
+    cursor.execute(query)
+    records = cursor.fetchall()
+    conn.close()
+    return records</pre>`
+    },
+    { 
+        type: "free",
+        question: "Write a function that connects to the baseball database, gets the playerIDs from the Batting table, closes the connection, and returns a pandas dataframe instead of a list.", 
+        answer: `<pre>import sqlite3
+import pandas as pd
+
+def get_player_ids():
+    conn = sqlite3.connect('baseball.db')
+    cursor = conn.cursor()
+    query = "SELECT playerID FROM Batting"
+    cursor.execute(query)
+    records = cursor.fetchall()
+    conn.close()
+    df = pd.DataFrame(records, columns=["playerID"])
+    return df</pre>`
+    }
 ];
 
 const programmingQuestions = [
