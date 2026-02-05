@@ -524,6 +524,19 @@ footer {
     margin-bottom: 1rem;
 }
 
+/* Matrix table styling for math questions */
+.matrix-table {
+    border-collapse: collapse;
+    margin: 0.5rem auto;
+    font-family: 'Courier New', monospace;
+}
+
+.matrix-table td {
+    padding: 2px 6px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
 /* Print Styles */
 @media print {
     body {

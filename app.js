@@ -252,16 +252,102 @@ class PracticeTest {
 
 // Question Banks
 const deepLearningQuestions = [
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 },
-    { question: "", options: ["", "", "", ""], correctAnswer: 0 }
+    { 
+        type: "free",
+        question: `Compute the matrix-vector product:<br><br>$$\\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} \\begin{bmatrix} 5 \\\\ 6 \\end{bmatrix}$$`, 
+        answer: "$\\begin{bmatrix} 17 \\\\ 39 \\end{bmatrix}$"
+    },
+    { 
+        type: "free",
+        question: `Compute the product:<br><br>$$\\begin{bmatrix} 2 & 3 \\end{bmatrix} \\begin{bmatrix} 4 \\\\ 5 \\end{bmatrix}$$`, 
+        answer: "$23$"
+    },
+    { 
+        type: "free",
+        question: `Given predictions $\\hat{Y}$ and actual values $Y$:<br><br>$$\\hat{Y} = \\begin{bmatrix} 2 \\\\ 4 \\\\ 6 \\end{bmatrix}, \\quad Y = \\begin{bmatrix} 1 \\\\ 5 \\\\ 4 \\end{bmatrix}$$<br>Compute the Mean Squared Error (MSE) loss.`, 
+        answer: "$2$"
+    },
+    { 
+        type: "free",
+        question: `A single-input neural network has weight $w = 2$ and bias $b = 1$. Given input:<br><br>$$X = \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix}$$<br>Compute the output $\\hat{Y}$.`, 
+        answer: "$\\begin{bmatrix} 3 \\\\ 5 \\\\ 7 \\end{bmatrix}$"
+    },
+    { 
+        type: "free",
+        question: `A feedforward neural network receives the following input matrix $X$:<br><br>$$X = \\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\\\ 10 & 11 & 12 \\end{bmatrix}$$<br>How many inputs does this neural network have?`, 
+        answer: "$3$"
+    },
+    { 
+        type: "free",
+        question: `A feedforward neural network has 1 output and receives the following input matrix $X$:<br><br>$$X = \\begin{bmatrix} 1 & 2 & 3 & 4 \\\\ 5 & 6 & 7 & 8 \\\\ 9 & 10 & 11 & 12 \\end{bmatrix}$$<br>What is the shape of the output $\\hat{Y}$?`, 
+        answer: "$(3, 1)$"
+    },
+    { 
+        type: "code",
+        question: `Complete the following PyTorch program to compute and print the loss:<pre>import torch
+
+X = torch.tensor([
+    [2.0],
+    [5.0]
+])
+
+Y = torch.tensor([
+    [5.0],
+    [1.0]
+])
+
+w = torch.tensor([
+    [3.0]
+])
+
+b = torch.tensor([
+    [1.0]
+])
+
+# Your code here:</pre>`,
+        answer: `Yhat = X@w + b
+
+r = Yhat - Y
+SSE = r.T@r
+loss = SSE/2
+print(loss)`,
+        lines: 6
+    },
+    { 
+        type: "code",
+        question: `Write a PyTorch program that defines a tensor, computes the cube of the tensor, and prints the derivative at that point.`,
+        answer: `import torch
+
+x = torch.tensor([
+    [5.0]
+],requires_grad = True)
+f = x**3
+f.backward()
+print(x.grad)`,
+        lines: 8
+    },
+    { 
+        type: "code",
+        question: `Write a PyTorch program that defines two tensors, computes a function of both variables, and prints the partial derivatives.`,
+        answer: `import torch
+
+x = torch.tensor([
+    [2.0]
+],requires_grad = True)
+y = torch.tensor([
+    [3.0]
+],requires_grad = True)
+f = x**2 + y**2
+f.backward()
+print(x.grad)
+print(y.grad)`,
+        lines: 12
+    },
+    { 
+        type: "free",
+        question: `Compute the Hadamard product (element-wise product):<br><br>$$\\begin{bmatrix} 2 & 3 \\\\ 4 & 5 \\end{bmatrix} \\odot \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$$`, 
+        answer: "$\\begin{bmatrix} 2 & 6 \\\\ 12 & 20 \\end{bmatrix}$"
+    }
 ];
 
 const databaseQuestions = [
